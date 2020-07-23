@@ -298,7 +298,7 @@
         // inject font into SVG using the fontFace API (too experimental?)
         const svgFont = new FontFace(
           "AtlasGrotesk-Black",
-          "url(../fonts/AtlasGrotesk-Black-Web.woff)"
+          "url(./fonts/AtlasGrotesk-Black-Web.woff)"
         );
         svgFont.load().then((font) => {
           svg.fonts.add(font);
