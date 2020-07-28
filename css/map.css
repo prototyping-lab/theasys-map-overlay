@@ -1,82 +1,38 @@
 
-body {
-  margin: 0px;
-  overflow: hidden;
-}
-
-.info {
-  margin: 20px;
-}
-
-* {
-  font-family: "AtlasGrotesk", sans-serif;
-}
-
-input,
-button {
-  padding: 10px;
-  margin: 3px;
-}
-
-input {
-  display: block;
-}
-
 .panorama-wrapper {
   position: relative;
 }
 
-.overlay-gui,
-.overlay-map {
+.panorama-wrapper .overlay-gui,
+.panorama-wrapper .overlay-map {
   position: absolute;
   display: block;
 }
 
-.overlay-gui {
+.panorama-wrapper .overlay-gui {
   z-index: 1;
   top: 60px;
   right: 10px;
   height: 540px;
 }
 
-.overlay-map {
+.panorama-wrapper .overlay-map {
   z-index: 2;
   right: 160px;
   top: 20px;
   height: 560px;
-  /* transition: all 0.3s; */
-  /* filter: grayscale(0) contrast(1) brightness(1); */
   opacity: 1;
 }
 
-#floorplan-1:not(.visible),
-#floorplan-2:not(.visible),
-#floorplan-3:not(.visible),
-#floorplan-4:not(.visible),
-#floorplan-5:not(.visible) {
+.panorama-wrapper #floorplan-1:not(.visible),
+.panorama-wrapper #floorplan-2:not(.visible),
+.panorama-wrapper #floorplan-3:not(.visible),
+.panorama-wrapper #floorplan-4:not(.visible),
+.panorama-wrapper #floorplan-5:not(.visible) {
   visibility: hidden;
-  /* filter: grayscale(0.5) contrast(.7) brightness(1.3); */
 }
 
-/*
-#floorplan-1:not(.visible) {
-  transform: translate(0, 0px)  scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
-}
-#floorplan-2:not(.visible) {
-  transform: translate(0, 8px) scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
-}
-#floorplan-3:not(.visible) {
-  transform: translate(0, 16px) scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
-}
-#floorplan-4:not(.visible) {
-  transform: translate(0, 24px) scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
-}
-#floorplan-5:not(.visible) {
-  transform: translate(0, 32px)scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
-}
-*/
-
-.panorama {
+.panorama-wrapper .panorama {
   z-index: 0;
   position: absolute;
   display: block;
