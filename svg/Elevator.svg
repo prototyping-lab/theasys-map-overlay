@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 24.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="elevator" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1200 1200" style="enable-background:new 0 0 1200 1200;" xml:space="preserve">
+	 viewBox="0 0 240 1200" style="enable-background:new 0 0 240 1200;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;stroke:#666666;stroke-width:12;stroke-miterlimit:10;}
 	.st1{font-family:'AtlasGrotesk-Black';}
 	.st2{font-size:64px;}
 </style>
 <title>Elevator</title>
+<!--
+<g id="background">
+	<rect x="0" y="0" width="240" height="1200" fill="#f00" />
+</g>
+-->
 <g id="floors">
-	<g id="floor-3OG">
-		<rect id="rect-3OG" x="952" y="59.8" class="st0" width="200" height="200"/>
-		<text id="text-3OG" transform="matrix(1 0 0 1 970 134)" class="st1 st2">OG 3</text>
+	<g id="floor-H3">
+		<rect id="rect-H3" x="20" y="59.8" class="st0" width="200" height="200"/>
+		<text id="text-H2" transform="matrix(1 0 0 1 30 134)" class="st1 st2">OG 3</text>
 	</g>
-	<g id="floor-2OG">
-		<rect id="rect-2OG" x="952" y="281.3" class="st0" width="200" height="200"/>
-		<text id="text-2OG" transform="matrix(1 0 0 1 970 355)" class="st1 st2">OG 2</text>
+	<g id="floor-H2">
+		<rect id="rect-H2" x="20" y="281.3" class="st0" width="200" height="200"/>
+		<text id="text-H2" transform="matrix(1 0 0 1 30 355)" class="st1 st2">OG 2</text>
 	</g>
-	<g id="floor-1OG">
-		<rect id="rect-1OG" x="952" y="502.7" class="st0" width="200" height="200"/>
-		<text id="text-1OG" transform="matrix(1 0 0 1 970 577)" class="st1 st2">OG 1</text>
+	<g id="floor-H1">
+		<rect id="rect-H1" x="20" y="502.7" class="st0" width="200" height="200"/>
+		<text id="text-H1" transform="matrix(1 0 0 1 30 577)" class="st1 st2">OG 1</text>
 	</g>
-	<g id="floor-EG">
-		<rect id="rect-EG" x="952" y="724.2" class="st0" width="200" height="200"/>
-		<text id="text-EG" transform="matrix(1 0 0 1 970 798)" class="st1 st2">EG</text>
+	<g id="floor-H0">
+		<rect id="rect-H0" x="20" y="724.2" class="st0" width="200" height="200"/>
+		<text id="text-H0" transform="matrix(1 0 0 1 30 798)" class="st1 st2">EG</text>
 	</g>
-	<g id="floor-1UG">
-		<rect id="rect-1UG" x="952.1" y="945.7" class="st0" width="200" height="200"/>
-		<text id="text-1UG" transform="matrix(1 0 0 1 970 1020)" class="st1 st2">UG</text>
+	<g id="floor-Hu">
+		<rect id="rect-Hu" x="20" y="945.7" class="st0" width="200" height="200"/>
+		<text id="text-Hu" transform="matrix(1 0 0 1 30 1020)" class="st1 st2">UG</text>
 	</g>
 </g>
 </svg>

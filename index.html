@@ -42,20 +42,18 @@
 
       .overlay-gui {
         z-index: 1;
-        top: 325px;
-        right: 20px;
-        height: 250px;
+        top: 60px;
+        right: 10px;
+        height: 540px;
       }
 
       .overlay-map {
         z-index: 2;
-        right: -50px;
-        top: 75px;
-        height: 400px;
-        transition: all 0.3s;
-        transform-origin: center top; 
-        transform: translate(-150px, 150px);
-        filter: grayscale(0) contrast(1) brightness(1);
+        right: 160px;
+        top: 20px;
+        height: 560px;
+        /* transition: all 0.3s; */
+        /* filter: grayscale(0) contrast(1) brightness(1); */
         opacity: 1;
       }
 
@@ -64,9 +62,11 @@
       #floorplan-3:not(.visible),
       #floorplan-4:not(.visible),
       #floorplan-5:not(.visible) {
-        filter: grayscale(0.5) contrast(.7) brightness(1.3);
+        visibility: hidden;
+        /* filter: grayscale(0.5) contrast(.7) brightness(1.3); */
       }
-      
+
+      /*
       #floorplan-1:not(.visible) {
         transform: translate(0, 0px)  scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
       }
@@ -82,7 +82,7 @@
       #floorplan-5:not(.visible) {
         transform: translate(0, 32px)scale(0.2, 0.2) rotate(-30deg) skewX(45deg);
       }
-
+      */
 
       .panorama {
         z-index: 0;
@@ -91,8 +91,6 @@
         left: 0px;
         top: 0px;
       }
-
-
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   </head>
@@ -107,31 +105,31 @@
     <div class="panorama-wrapper">
       <object
         id="floorplan-5"
-        data="./svg/1UG.svg"
+        data="./svg/Hu.svg"
         type="image/svg+xml"
         class="overlay-map"
       ></object>
       <object
         id="floorplan-4"
-        data="./svg/EG.svg"
+        data="./svg/H0.svg"
         type="image/svg+xml"
         class="overlay-map"
       ></object>
       <object
         id="floorplan-3"
-        data="./svg/1OG.svg"
+        data="./svg/H1.svg"
         type="image/svg+xml"
         class="overlay-map"
       ></object>
       <object
         id="floorplan-2"
-        data="./svg/2OG.svg"
+        data="./svg/H2.svg"
         type="image/svg+xml"
         class="overlay-map"
       ></object>
       <object
         id="floorplan-1"
-        data="./svg/3OG.svg"
+        data="./svg/H3.svg"
         type="image/svg+xml"
         class="overlay-map"
       ></object>
@@ -157,6 +155,8 @@
       const svgMaps = document.querySelectorAll(".overlay-map");
       const svgGui = document.querySelector(".overlay-gui");
 
+      window.svgGui = svgGui;
+
       let maps = {};
       let panoLinks = {};
 
@@ -174,29 +174,39 @@
       };
 
       const styles = {
-        "1UG": {
+        Hu: {
+          /*
           ".cls-1": palette.lightgray,
           ".cls-2": palette.darkgray,
+          */
         },
-        EG: {
+        H0: {
+          /*
           ".cls-1": palette.blue,
           ".cls-2": palette.purple,
           ".cls-3": palette.darkgray,
           ".cls-4": palette.lightgray
+          */
         },
-        "1OG": {
+        H1: {
+          /*
           ".cls-1": palette.lightgray,
           ".cls-3": palette.darkgray,
           ".cls-4": palette.green,
           ".cls-5": palette.orange
+          */
         },
-        "2OG": {
+        H2: {
+          /*
           ".cls-1": palette.lightgray,
           ".cls-2": palette.darkgray
+          */
         },
-        "3OG": {
+        H3: {
+          /*
           ".cls-1": palette.lightgray,
           ".cls-2": palette.darkgray
+          */
         },
         Elevator: {
           ".st0": {
@@ -204,16 +214,15 @@
             current: "#ddd",
             hilite: "#fff",
             stroke: "#000",
-            strokeWidth: "8px",
+            strokeWidth: "1px",
             opacity: ".4",
           },
-          ".st2": { 
-            fill: "#000", 
-            opacity: ".7" 
-          }
+          ".st2": {
+            fill: "#000",
+            opacity: ".7",
+          },
         },
       };
-
 
       ////////////////////////////////////////////////////////////////////////////////
       // theasys api
@@ -222,51 +231,66 @@
       let DEBUG = false;
 
       function apiSet(key, value) {
-          THEASYS.iframe.postMessage({type: "api", key, action:"set", value }, "https://www.theasys.io");
+        THEASYS.iframe.postMessage(
+          { type: "api", key, action: "set", value },
+          "https://www.theasys.io"
+        );
       }
 
       function apiGet(key) {
-          THEASYS.iframe.postMessage({type: "api", key, action:"get" }, "https://www.theasys.io");
+        THEASYS.iframe.postMessage(
+          { type: "api", key, action: "get" },
+          "https://www.theasys.io"
+        );
       }
 
       function apiListen(key, fn) {
-          const eventHandler = event => {
-              const data = event.data;
-              if(data[key]) fn(data[key]);
-          }
-          window.addEventListener("message", eventHandler, false);
+        const eventHandler = (event) => {
+          const data = event.data;
+          if (data[key]) fn(data[key]);
+        };
+        window.addEventListener("message", eventHandler, false);
       }
 
       apiListen("loaded", () => {
+        console.log("Theasys loaded.");
+        THEASYS.iframe = document.querySelector("#theasys-pano").contentWindow;
 
-          console.log('Theasys loaded.');
-          THEASYS.iframe = document.querySelector("#theasys-pano").contentWindow;
+        // create list of pano-links
+        apiListen("panoramas", (panos) => {
+          panos.forEach((pano) => (panoLinks[pano.title] = pano.rnd));
+          if(DEBUG) console.log(panoLinks);
+        });
 
-          // create list of pano-links
-          apiListen('panoramas', panos => {
-            panos.forEach( pano => panoLinks[pano.title] = pano.rnd );
-            console.log(panoLinks);
-          });
+        // log stuff on the console
+        const logfn = (tmplfn) => (data) => {
+          if (DEBUG) console.log(tmplfn(data));
+        };
 
-          // log stuff on the console
-          const logfn = tmplfn => data => { if(DEBUG) console.log(tmplfn(data)); };
+        apiListen(
+          "move",
+          logfn((_) => `move ${_.value}° ${_.direction}`)
+        );
+        apiListen(
+          "lon",
+          logfn((_) => `longitude: ${_}`)
+        );
+        apiListen(
+          "lat",
+          logfn((_) => `latitude: ${_}`)
+        );
+        apiListen(
+          "fov",
+          logfn((_) => `field of vision: ${_}`)
+        );
+        apiListen(
+          "direction",
+          logfn((_) => `direction: ${_}`)
+        );
 
-          apiListen('move',logfn(_ => `move ${_.value}° ${_.direction}`));
-          apiListen('lon', logfn(_ => `longitude: ${_}`));
-          apiListen('lat', logfn(_  => `latitude: ${_}`));
-          apiListen('fov', logfn(_ => `field of vision: ${_}`));
-          apiListen('direction', logfn(_ => `direction: ${_}`));
-
-          // get panos
-          apiGet("panoramas");
-
+        // get panos
+        apiGet("panoramas");
       });
-
-
-      
-
-
-
 
       ////////////////////////////////////////////////////////////////////////////////
       // elevator
@@ -274,19 +298,6 @@
       let currentFloorElement = null;
       let currentRoomElement = null;
       let currentFloor = "EG";
-
-      // show a specific map
-      function showMap(floor) {
-        for( const [id, map] of Object.entries(maps) ) {
-          if (id === floor) {
-            // show this map
-            map.classList.add("visible");
-          } else {
-            // hide all other maps
-            map.classList.remove("visible");
-          }
-        };
-      }
 
       // load elevator svg (map switching gui) , adding custom css and click handlers
       svgGui.addEventListener("load", () => {
@@ -330,38 +341,69 @@
         );
         stylesheet.insertRule(`.st2 { pointer-events: none; }`);
 
-        // add transitions 
-        stylesheet.insertRule(`* {transition: fill 0.1s !important; }`, 0);
+        // add transitions
+        stylesheet.insertRule(`* {transition: fill 0.2s !important; }`, 0);
         //stylesheet.insertRule(`* {transition: all 0.1s !important; }`, 0);
 
         // add click handlers for every single floor
         SVG = svg;
         const floors = svg.querySelectorAll("#floors > g");
-        floors.forEach((floor) => {
-          floor.addEventListener("click", () => {
+        floors.forEach((floorElement) => {
+          floorElement.addEventListener("click", () => {
 
-            currentFloor = floor.id.replace(/^floor-/, "");
-            console.log(`Go to: ${currentFloor}`);
-            showMap(currentFloor);
+            if (floorElement === currentFloorElement) {
+              toggleCurrentMap();
+            } else {
+              // activate other map
+              currentFloor = floorElement.id.replace(/^floor-/, "");
+              console.log(`Go to floor: ${currentFloor}`);
+              showMap(currentFloor);
 
-            if (currentFloorElement) {
-              currentFloorElement.classList.remove("current-floor");
+              if (currentFloorElement) {
+                currentFloorElement.classList.remove("current-floor");
+              }
+              currentFloorElement = floorElement;
+              currentFloorElement.classList.add("current-floor");
             }
-            currentFloorElement = floor;
-            currentFloorElement.classList.add("current-floor");
           });
         });
       });
 
+      ////////////////////////////////////////////////////////////////////////////////
+      // maps
 
-    ////////////////////////////////////////////////////////////////////////////////
-    // maps
+      function showMap(floor) {
+        for (const [id, map] of Object.entries(maps)) {
+          if (id === floor) {
+            // show this map
+            map.classList.add("visible");
+          } else {
+            // hide all other maps
+            map.classList.remove("visible");
+          }
+        }
+      }
 
-     // load svg maps, adding custom css and click handlers
+      function hideCurrentMap() {
+        // hide all the maps
+        for (const [id, map] of Object.entries(maps)) {
+          map.classList.remove("visible");
+        }
+      }
+
+      function toggleCurrentMap() {
+        for (const [id, map] of Object.entries(maps)) {
+          if (id === currentFloor) {
+            map.classList.toggle("visible");
+          }
+        }
+      }
+
+      // load svg maps, adding custom css and click handlers
       svgMaps.forEach((svgElement) => {
         svgElement.addEventListener("load", () => {
           const svg = svgElement.contentDocument;
-          const floor = svg.querySelector("title").innerHTML;
+          const floor = svg.querySelector("g > g").id;
 
           // register map
           maps[floor] = svgElement;
@@ -373,6 +415,24 @@
 
           // inject styles
           const stylesheet = svg.styleSheets[0];
+
+          // this kinda sucks 🤷‍♂
+          stylesheet.insertRule(
+            '#Room g .current-room, #Rooms g .current-room, [data-name="Rooms"] g .current-room { opacity: 1; }',
+            0
+          );
+          stylesheet.insertRule(
+            '#Room g :not(.current-room):hover, #Rooms g :not(.current-room):hover, [data-name="Rooms"] g :not(.current-room):hover { opacity: 1;  }',
+            0
+          );
+
+          // Disable interaction for background
+          stylesheet.insertRule(
+            '#Grundriss, [data-name="Grundriss"] { pointer-events: none }'
+          );
+
+          /*
+
           const style = styles[floor];
 
           // set style for each entry in our style object
@@ -400,18 +460,25 @@
               `${selector} {transition: fill 0.1s !important; }`,
               0
             );
-          }
+   
+          };
+          */
 
-          // add click handlers for every single room
-          const rooms = svg.querySelectorAll(
-            '#Room g, #Rooms g, [data-name="Rooms"] g'
-          );
+          // add click handlers for every single room ( make sure they have an id )
+          let rooms = svg.querySelectorAll(
+            '#Room g[id], #Rooms g[id], [data-name="Rooms"] g[id]'
+          )
+ 
+          
           rooms.forEach((room) => {
+
+            // click handler 
             room.addEventListener("click", () => {
+
               panoLink = panoLinks[room.id];
-              if(panoLink) {
+              if (panoLink) {
                 
-                console.log(`Go to: ${room.id} (${panoLink})  `);
+                console.log(`Go to room: ${room.id} (${panoLink})  `);
 
                 if (currentRoomElement) {
                   currentRoomElement.classList.remove("current-room");
@@ -419,15 +486,15 @@
                 currentRoomElement = room.querySelector("path, polygon, rect");
                 currentRoomElement.classList.add("current-room");
 
-                apiSet('panorama', panoLink);
+                apiSet("panorama", panoLink);
 
+                hideCurrentMap();
               } else {
                 console.warn(`No valid Pano-Link for Room  ${room.id}`);
                 alert(`No valid Pano-Link for Room  ${room.id}`);
               }
             });
           });
-
         });
       });
     </script>
