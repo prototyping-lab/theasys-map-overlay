@@ -8,18 +8,22 @@
     <title>Digitale Ausstellung | Landing</title>
     <meta name="description" content="">
 
-    <!-- Custom template css and index.css -->
-    <link href="https://ausstellung.hfg-gmuend.de/assets/scss/main.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ausstellung.hfg-gmuend.de/assets/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://ausstellung.hfg-gmuend.de/assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://ausstellung.hfg-gmuend.de/assets/images/favicon-16x16.png">
+
+    <!-- We need to use local CSS to prevent CORS for WOFF-Fonts -->
+    <link href="css/main.css" rel="stylesheet">
     <!-- JS -->
     <script src="https://ausstellung.hfg-gmuend.de/assets/vendor/jquery-3.5.1.min.js"></script>
     <script src="https://ausstellung.hfg-gmuend.de/assets/vendor/flickity.js"></script>
     <script src="https://ausstellung.hfg-gmuend.de/assets/vendor/flickity-sync.js"></script>
-
 </head>
 <body class="home">
 
     <header id="header">
     <div class="container-fluid navigation" id="headernavigation">
+
         <a class="brand" aria-label="Startseite">
             H<span class="h">ochschule</span> f<span class="h">ür</span> G<span class="h">estaltung</span><br><br>
             <span id="subline">
@@ -31,40 +35,20 @@
         <a href="#swup" class="sr-only">Zum Seiteninhalt springen</a>
 
         <nav id="main-nav" class="container" data-swup="3">
-
-            <ul class="nav-select" role="navigation" g-component="Navigation">
-                <li class="active">
-                    <a role="menuitem" title="Kurse"
-                        data-swup-preload="">Startseite</a>
-                    <i class="i-caret i-medium"></i>
-                </li>
-                <li>
-                    <a role="menuitem" title="Kurse"
-                        data-swup-preload="">Kurse</a>
-                    <i class="i-caret i-medium"></i>
-                    <nav>
-                    </nav>
-                </li>
-                <li>
-                    <a role="menuitem" title="Projekte"
-                        data-swup-preload="">Projekte</a>
-                    <i class="i-caret i-medium"></i>
-                    <nav>
-                    </nav>
-                </li>
-                <li>
-                    <a role="menuitem" title="Hochschulaktivitäten"
-                        data-swup-preload="">Hochschulaktivitäten</a>
-                    <i class="i-caret i-medium"></i>
-                    <nav>
-                    </nav>
-                </li>
-              
-            </ul>
         </nav>
 
         <div id="nav-icons" data-swup="2">
+            <button id="toggle-search" class="search-button" g-component="SearchToggle"
+                aria-label="Suche öffnen oder schließen">
+                <i class="i-search i-small" id="search-open"></i>
+                <i class="i-close i-small" id="search-close"></i>
+            </button>
+
+            <button id="toggle-menu" class="menu-button" g-component="MenuToggle" aria-label="Menü offnen">
+                <span class="navicon"></span>
+            </button>
         </div>
+
 
         <div id="searchmodal">
         </div>
@@ -76,17 +60,16 @@
     <article class="container page-body" itemprop="mainContentOfPage" itemscope=""
         itemtype="https://schema.org/WebPageElement">
 
-    <div class="hero" g-component="Hero">
-
-    <!-- this is where we embed the 360° tour -->
+        <div class="hero" g-component="Hero">
     <div class="carousel flickity-enabled is-draggable">
 
         <div class="carousel-cell" style="position: absolute; left: 0%;" aria-hidden="true">
             <div class="cell-inner">
+
                 <iframe style="border: none; position: absolute; left: 0; top: 0; width:100%; height: 100%" src="https://www.theasys.io/viewer/33yllMF5mRG5F1NrH3hibBbM8upUOb" allow="vr;gyroscope;accelerometer" frameborder="0" scrolling="no"></iframe>
+
             </div>
         </div>
-        
     </div>
 
     <div class="info">
@@ -100,6 +83,10 @@
     </div>
 </div>
 
+
+<footer class="footer">
+    <div class="container">
+      
         <!-- Legal -->
         <div class="row footer-row">
             <div class="col-12 col-sm-4 icons">
@@ -125,8 +112,12 @@
                 <p>
                     <small>
                         <a data-no-swup="">Impressum</a>
+
                         <a data-no-swup="">Datenschutzerklärung</a>
-                        <a data-no-swup="">Informationssicherheit</a>
+
+                        <a href="https://www.hfg-gmuend.de/informationssicherheit"
+                            data-no-swup="">Informationssicherheit</a>
+
                     </small>
                 </p>
             </div>
