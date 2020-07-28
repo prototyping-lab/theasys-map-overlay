@@ -5,8 +5,6 @@
     url("../fonts/AtlasGrotesk-Black-Web.woff") format("woff");
   font-display: swap;
 }
-
-/*
 @font-face {
   font-family: "AtlasGrotesk";
   font-weight: 600;
@@ -29,18 +27,3 @@
     url("../fonts/AtlasGrotesk-Regular-Web.woff") format("woff");
   font-display: swap;
 }
-@font-face {
-  font-family: "AtlasGrotesk";
-  font-weight: 300;
-  src: url("../fonts/AtlasGrotesk-Light-Web.woff2") format("woff2"),
-    url("../fonts/AtlasGrotesk-Light-Web.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "AtlasGrotesk";
-  font-weight: 200;
-  src: url("../fonts/AtlasGrotesk-Thin-Web.woff2") format("woff2"),
-    url("../fonts/AtlasGrotesk-Thin-Web.woff") format("woff");
-  font-display: swap;
-}
-*/
