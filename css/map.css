@@ -11,15 +11,15 @@
 
 .panorama-wrapper .overlay-gui {
   z-index: 1;
-  top: 60px;
-  right: 10px;
+  bottom: 10px;
+  right: 30px;
   height: 540px;
 }
 
 .panorama-wrapper .overlay-map {
   z-index: 2;
-  right: 160px;
-  top: 20px;
+  right: 180px;
+  bottom: 32px;
   height: 560px;
   opacity: 1;
 }
