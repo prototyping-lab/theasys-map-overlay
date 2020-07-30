@@ -1,6 +1,7 @@
 let THEA = {
 
     debug: true,
+    panoLinks: {},
 
     apiSet(key, value) {
         THEA.iframe.postMessage(
@@ -27,8 +28,8 @@ let THEA = {
 
         // create list of pano-links
         THEA.apiListen("panoramas", (panos) => {
-            panos.forEach((pano) => (panoLinks[pano.title] = pano.rnd));
-            if (THEA.debug) console.log(panoLinks);
+            panos.forEach((pano) => (THEA.panoLinks[pano.title] = pano.rnd));
+            if (THEA.debug) console.log(panos);
         });
 
         // log stuff on the console

@@ -1,11 +1,11 @@
 let THEA = {
   debug: false,
+  panoLinks: {}
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  
-  THEA.iframe = document.querySelector("#theasys-pano");
 
+  THEA.iframe = document.querySelector("#theasys-pano");
   THEA.iframe.addEventListener("load", async function () {
 
     //console.log("iframe loaded");
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         api.engine.execute("set", key, value, (x) => resolve(x))
       );
     };
+    
     THEA.apiGet = async function (key) {
       return await new Promise((resolve) =>
         api.engine.execute("get", key, null, (x) => resolve(x))
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // create list of pano links
     // const panos = await THEA.apiGet("panoramas"); // not working locally
     let panos = Object.values(THEASYS.renderer.panoramas());
-    panos.forEach((pano) => (panoLinks[pano.title] = pano.rnd));
+    panos.forEach((pano) => (THEA.panoLinks[pano.title] = pano.rnd));
     
   });
 });
