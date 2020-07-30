@@ -1,38 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="elevator" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 240 1200" style="enable-background:new 0 0 240 1200;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;stroke:#666666;stroke-width:12;stroke-miterlimit:10;}
-	.st1{font-family:'AtlasGrotesk-Black';}
-	.st2{font-size:64px;}
-</style>
-<title>Elevator</title>
-<!--
-<g id="background">
-	<rect x="0" y="0" width="240" height="1200" fill="#f00" />
-</g>
--->
-<g id="floors">
-	<g id="floor-H3">
-		<rect id="rect-H3" x="20" y="59.8" class="st0" width="200" height="200"/>
-		<text id="text-H2" transform="matrix(1 0 0 1 30 134)" class="st1 st2">OG 3</text>
-	</g>
-	<g id="floor-H2">
-		<rect id="rect-H2" x="20" y="281.3" class="st0" width="200" height="200"/>
-		<text id="text-H2" transform="matrix(1 0 0 1 30 355)" class="st1 st2">OG 2</text>
-	</g>
-	<g id="floor-H1">
-		<rect id="rect-H1" x="20" y="502.7" class="st0" width="200" height="200"/>
-		<text id="text-H1" transform="matrix(1 0 0 1 30 577)" class="st1 st2">OG 1</text>
-	</g>
-	<g id="floor-H0">
-		<rect id="rect-H0" x="20" y="724.2" class="st0" width="200" height="200"/>
-		<text id="text-H0" transform="matrix(1 0 0 1 30 798)" class="st1 st2">EG</text>
-	</g>
-	<g id="floor-Hu">
-		<rect id="rect-Hu" x="20" y="945.7" class="st0" width="200" height="200"/>
-		<text id="text-Hu" transform="matrix(1 0 0 1 30 1020)" class="st1 st2">UG</text>
-	</g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 323.83">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #1d1d1b;
+                opacity: 0.2;
+            }
+
+            .cls-2,
+            .cls-3 {
+                fill: #fff;
+            }
+
+            .cls-3 {
+                opacity: 0.5;
+            }
+        </style>
+    </defs>
+    <title>Elevator</title>
+    <g id="floors">
+        <g id="floor-Hu">
+            <rect class="cls-1" y="263.83" width="60" height="60" />
+            <path class="cls-2"
+                d="M17.19,287.36h2.5v8a5.42,5.42,0,0,0,.57,3.06,2.9,2.9,0,0,0,2.42,1,2.89,2.89,0,0,0,2.45-1c.57-.72.54-2,.54-3.06v-8h2.46v9c0,3.48-2.19,5-5.49,5s-5.45-1.52-5.45-5Z" />
+            <path class="cls-2"
+                d="M33.19,294.33c0,3.6,1.38,5.22,3.71,5.22a3.26,3.26,0,0,0,3.49-3.49l0-.23H36.9v-1.9h5.87v7.21h-2v-1.91h0a4.44,4.44,0,0,1-4.13,2.19c-3.76,0-6-2.55-6-7s2.65-7.24,6.45-7.24c3.13,0,5.15,1.52,5.47,4.18H39.89A2.75,2.75,0,0,0,37,289C34.52,289,33.19,291,33.19,294.33Z" />
+        </g>
+        <g id="floor-H0">
+            <rect class="cls-1" y="197.83" width="60" height="60" />
+            <path class="cls-2" d="M18.36,221.36h9v2H20.89v3.91h6.05v1.94H20.89v4h6.6v2H18.36Z" />
+            <path class="cls-2"
+                d="M32.17,228.33c0,3.6,1.39,5.22,3.71,5.22a3.26,3.26,0,0,0,3.49-3.49l0-.24H35.88v-1.89h5.87v7.21h-2v-1.91h-.06a4.43,4.43,0,0,1-4.12,2.19c-3.76,0-6-2.55-6-7s2.64-7.24,6.44-7.24c3.13,0,5.15,1.52,5.48,4.18H38.87A2.74,2.74,0,0,0,36,223C33.5,223,32.17,225,32.17,228.33Z" />
+
+        </g>
+        <g id="floor-H1">
+            <rect class="cls-1" y="132" width="60" height="60" />
+            <path class="cls-2"
+                d="M26.09,155.78c3.26,0,5.22,2.22,5.22,6.9s-2,6.9-5.22,6.9-5.17-2.24-5.17-6.9S23,155.78,26.09,155.78Zm2.56,6.92c0-3.55-1-5.06-2.56-5.06s-2.54,1.46-2.54,5.06.95,5,2.54,5S28.65,166.17,28.65,162.7Z" />
+            <path class="cls-2"
+                d="M35.72,159.91H33.09v-1.59h.36a2.9,2.9,0,0,0,1.94-.59,2.29,2.29,0,0,0,.63-1.8h2.13v13.38H35.72Z" />
+
+        </g>
+        <g id="floor-H0">
+            <rect class="cls-1" y="66" width="60" height="60" />
+            <path class="cls-2"
+                d="M24.35,89.78c3.26,0,5.22,2.22,5.22,6.9s-2,6.9-5.22,6.9-5.17-2.24-5.17-6.9S21.24,89.78,24.35,89.78Zm2.56,6.92c0-3.55-1-5.06-2.56-5.06s-2.54,1.46-2.54,5.06,1,5,2.54,5S26.91,100.17,26.91,96.7Z" />
+            <path class="cls-2"
+                d="M31.62,94.28c0-2.82,1.84-4.51,4.7-4.51,3.17,0,4.47,1.78,4.47,3.72s-.9,3-3,5l-3,2.85v0h6.07v2h-9.5v-1.52L36,97.27c1.51-1.47,2.27-2.37,2.27-3.63a1.86,1.86,0,0,0-2-2c-1.14,0-2.2.67-2.2,2.66Z" />
+
+        </g>
+        <g id="floor-Hu">
+            <rect class="cls-1" width="60" height="60" />
+            <path class="cls-2"
+                d="M24.2,23.78c3.26,0,5.22,2.22,5.22,6.9s-2,6.9-5.22,6.9S19,35.34,19,30.68,21.08,23.78,24.2,23.78Zm2.55,6.92c0-3.55-1-5.06-2.55-5.06s-2.54,1.46-2.54,5.06.95,5,2.54,5S26.75,34.17,26.75,30.7Z" />
+            <path class="cls-2"
+                d="M35.25,31.45V29.62h.86a2,2,0,0,0,2.11-2,1.92,1.92,0,0,0-2-2,2,2,0,0,0-2.24,2.19H31.56c0-2.07,1.4-4.06,4.66-4.06,2.86,0,4.45,1.58,4.45,3.58a3.14,3.14,0,0,1-2.23,3v.05A3.16,3.16,0,0,1,41,33.69c0,2.07-1.69,3.89-4.82,3.89-3.41,0-4.71-2-4.83-4.11h2.48a2.31,2.31,0,0,0,2.42,2.2,2.14,2.14,0,0,0,2.32-2.11,2,2,0,0,0-2.3-2.11Z" />
+        </g>
+    </g>
 </svg>
