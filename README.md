@@ -9,7 +9,7 @@ Used for the HfG Semesterausstellung in Summer 2020.
 
 ## Hosting locally
 
-- See [local.html](local.html) and [landing.html](local-landing.html)
+- See [local.html](local.html) and [local-landing.html](local-landing.html)
 - Add your locally hosted tour to the local-tour folder.
 - make sure to edit config.js so it points at the local-tour
 
