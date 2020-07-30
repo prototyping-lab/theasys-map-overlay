@@ -71,74 +71,6 @@ const styles = {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-// theasys api
-
-let THEASYS = {};
-let DEBUG = false;
-
-function apiSet(key, value) {
-  THEASYS.iframe.postMessage(
-    { type: "api", key, action: "set", value },
-    "https://www.theasys.io"
-  );
-}
-
-function apiGet(key) {
-  THEASYS.iframe.postMessage(
-    { type: "api", key, action: "get" },
-    "https://www.theasys.io"
-  );
-}
-
-function apiListen(key, fn) {
-  const eventHandler = (event) => {
-    const data = event.data;
-    if (data[key]) fn(data[key]);
-  };
-  window.addEventListener("message", eventHandler, false);
-}
-
-apiListen("loaded", () => {
-  console.log("Theasys loaded.");
-  THEASYS.iframe = document.querySelector("#theasys-pano").contentWindow;
-
-  // create list of pano-links
-  apiListen("panoramas", (panos) => {
-    panos.forEach((pano) => (panoLinks[pano.title] = pano.rnd));
-    if (DEBUG) console.log(panoLinks);
-  });
-
-  // log stuff on the console
-  const logfn = (tmplfn) => (data) => {
-    if (DEBUG) console.log(tmplfn(data));
-  };
-
-  apiListen(
-    "move",
-    logfn((_) => `move ${_.value}° ${_.direction}`)
-  );
-  apiListen(
-    "lon",
-    logfn((_) => `longitude: ${_}`)
-  );
-  apiListen(
-    "lat",
-    logfn((_) => `latitude: ${_}`)
-  );
-  apiListen(
-    "fov",
-    logfn((_) => `field of vision: ${_}`)
-  );
-  apiListen(
-    "direction",
-    logfn((_) => `direction: ${_}`)
-  );
-
-  // get panos
-  apiGet("panoramas");
-});
-
-////////////////////////////////////////////////////////////////////////////////
 // elevator
 
 let currentFloorElement = null;
@@ -327,7 +259,7 @@ svgMaps.forEach((svgElement) => {
           currentRoomElement = room.querySelector("path, polygon, rect");
           currentRoomElement.classList.add("current-room");
 
-          apiSet("panorama", panoLink);
+          THEA.apiSet("panorama", panoLink);
 
           hideCurrentMap();
         } else {

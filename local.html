@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/map.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script defer src="js/theasys-api.js"></script>
+    <script defer src="js/theasys-api-local.js"></script>
     <script defer src="js/map.js"></script>
     <style>
       body {
@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="info">
-      <h1>Theasys MAP-Demo</h1>
+      <h1>Local MAP-Demo</h1>
 
       <p>
         <em>using a custom map on top of theasys ...</em>
@@ -66,16 +66,28 @@
         type="image/svg+xml"
         class="overlay-gui"
       ></object>
-
-      <script
-        async
-        src="https://static.theasys.io/embed.js"
-        data-theasys="6dvVLmEJHmim3LcS74M8sNG5QH7JoF"
-        data-id="theasys-pano"
-        data-class="panorama"
-        data-editing="0"
-      ></script>
+    <!--
+      <iframe
+        id="theasys-pano"
+        class="panorama"
+        src="https://www.theasys.io/viewer/33yllMF5mRG5F1NrH3hibBbM8upUOb"
+        allowfullscreen="true"
+        frameborder="0"
+        scrolling="no"
+        allow="vr;gyroscope;accelerometer"
+        style="width: 100%; height: 100%; border: none;"
+      ></iframe>
+    -->
+      <iframe
+      id="theasys-pano"
+      class="panorama"
+      src="local-tour/index.html"
+      allowfullscreen="true"
+      frameborder="0"
+      scrolling="no"
+      allow="vr;gyroscope;accelerometer"
+      style="width: 100%; height: 100%; border: none;"
+      ></iframe>
     </div>
-
   </body>
 </html>
