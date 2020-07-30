@@ -1,9 +1,12 @@
 // wrap it
 (function () {
-
   const svgMaps = document.querySelectorAll(".overlay-map");
   const svgGui = document.querySelector(".overlay-gui");
 
+  const minHeightLegend = "360px";
+  const minHeight = 250;
+  const minHeightMap = minHeight * 0.9 + "px";
+  const minHeightGui = minHeight * 0.65 + "px";
   window.svgGui = svgGui;
 
   let maps = {};
@@ -13,7 +16,7 @@
 
   let currentFloorElement = null;
   let currentRoomElement = null;
-  let currentFloor = "EG";
+  let currentFloor = 'H0';
 
   // load elevator svg (map switching gui) , adding custom css and click handlers
   svgGui.addEventListener("load", () => {
@@ -32,18 +35,33 @@
     // add transition
     stylesheet.insertRule(`* {transition: all 0.1s !important; }`, 0);
 
-    // add click handlers for every single floor
+    // hide if the gui is too small
+    stylesheet.insertRule(
+      `@media (max-height:${minHeightGui}) { :root { visibility: hidden ; }}`,
+      0
+    );
+
+    
     const floors = svg.querySelectorAll("#floors > g");
     floors.forEach((floorElement) => {
+
+      const id = floorElement.id.replace(/^floor-/, "");
+
+      // set currentFloorElement on init
+      if(id === currentFloor) {
+        currentFloorElement = floorElement;
+        currentFloorElement.classList.add("current-floor");
+      }
+
+      // add click handlers for every single floor
       floorElement.addEventListener("click", () => {
         if (floorElement === currentFloorElement) {
           toggleCurrentMap();
         } else {
           // activate other map
-          currentFloor = floorElement.id.replace(/^floor-/, "");
+          currentFloor = id;
           console.log(`Go to floor: ${currentFloor}`);
           showMap(currentFloor);
-
           if (currentFloorElement) {
             currentFloorElement.classList.remove("current-floor");
           }
@@ -115,6 +133,26 @@
 
       // do transitions
       stylesheet.insertRule(`* {transition: all 0.1s !important; }`, 0);
+
+      // hide complete map if the map is too small
+      stylesheet.insertRule(
+        `@media (max-height:${minHeightMap}) { * { visibility: hidden ; }}`,
+        0
+      );
+
+      // hide map legends if the map is too small
+      [
+        "H0Hintergrund",
+        "H1Hintergurnd",
+        "H2Hintergrund",
+        "H3Hintergrund",
+        "HuHintergrund",
+      ].forEach((id) => {
+        stylesheet.insertRule(
+          `@media (max-height:${minHeightLegend}) {  #${id} :not(.cls-1) { visibility: hidden ; }}`,
+          0
+        );
+      });
 
       // Disable interaction for background
       stylesheet.insertRule(
