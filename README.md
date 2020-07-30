@@ -5,11 +5,11 @@ Used for the HfG Semesterausstellung in Summer 2020.
 
 ## Hosting on Theasys.io
 
-- See <index.html>.
+- See [index.html](index.html).
 
 ## Hosting locally
 
-- See <local.html>
+- See [local.html](local.html).
 - Add your locally hosted tour to the local-tour folder.
 - make sure to edit config.js so it points at the local-tour
 
