@@ -5,7 +5,7 @@
 
   const minHeightLegend = "360px";
   const minHeight = 250;
-  const minHeightMap = minHeight * 0.9 + "px";
+  const minHeightMap = minHeight * 0.96 + "px";
   const minHeightGui = minHeight * 0.65 + "px";
   window.svgGui = svgGui;
 
