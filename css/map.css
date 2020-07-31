@@ -15,7 +15,7 @@
   width: 100%;
   height: 100%;
   background-color: #fff;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .panorama-wrapper .tour-welcome {
@@ -25,6 +25,16 @@
   left: 45%;
   height: 66%;
   pointer-events: none;
+  animation: fadein 2s;
+}
+
+.panorama {
+  animation: fadein 4s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .panorama-wrapper .tour-gui-wrapper:not(.visible),
