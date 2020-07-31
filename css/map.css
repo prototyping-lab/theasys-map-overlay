@@ -1,4 +1,8 @@
 
+.info {
+  z-index: 3;
+}
+
 .panorama-wrapper {
   position: relative;
 }
@@ -10,17 +14,17 @@
 }
 
 .panorama-wrapper .overlay-gui {
-  z-index: 1;
-  top: 30%;
+  z-index: 2;
+  top: 33%;
   height: 65%;
-  right: 150px;
+  right: 0px;
 }
 
 .panorama-wrapper .overlay-map {
-  z-index: 2;
-  right: calc(150px + 7.5%);
-  top: 5%;
-  height: 90%;
+  z-index: 1;
+  right: 0px;
+  top: 2%;
+  height: 96%;
   opacity: 1;
 }
 
