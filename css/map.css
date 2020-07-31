@@ -3,6 +3,36 @@
   z-index: 3;
 }
 
+/* teaser overlay */
+.panorama-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.panorama-wrapper .tour-intro {
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.85;
+}
+
+.panorama-wrapper .tour-welcome {
+  position: absolute;
+  display: block;
+  top:13.5%;
+  left: 45%;
+  height: 66%;
+  pointer-events: none;
+}
+
+.panorama-wrapper .tour-gui-wrapper:not(.visible),
+.panorama-wrapper .tour-intro:not(.visible) {
+  visibility: hidden;
+} 
+
+
 .panorama-wrapper {
   position: relative;
 }

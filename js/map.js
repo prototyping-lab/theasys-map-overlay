@@ -1,5 +1,6 @@
 // wrap it
 (function () {
+
   const svgMaps = document.querySelectorAll(".overlay-map");
   const svgGui = document.querySelector(".overlay-gui");
 
@@ -11,6 +12,34 @@
 
   let maps = {};
 
+  ///////////////////////////////////////////////////////////////////////////////
+  // intro
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+
+    let intro = document.querySelector('.panorama-wrapper .tour-intro');
+
+    if(intro) {
+      intro.addEventListener('click', evt => hideIntro(evt));
+    } else {
+      console.log('no intro screen');
+    }
+
+  });
+
+  function hideIntro(evt) {
+    console.log('hide intro', evt.target.classList);
+    // remove intro
+    document.querySelector('.panorama-wrapper .tour-intro').classList.remove('visible');
+    // show tour 
+    document.querySelector('.panorama-wrapper .tour-wrapper').classList.add('visible');
+    // initalize gui interaction
+    initGui();
+    //toggleCurrentMap();
+  }
+
+
   ////////////////////////////////////////////////////////////////////////////////
   // elevator
 
@@ -19,7 +48,14 @@
   let currentFloor = 'H0';
 
   // load elevator svg (map switching gui) , adding custom css and click handlers
-  svgGui.addEventListener("load", () => {
+
+
+
+  // svgGui.addEventListener("load", initGui);
+
+
+function initGui() {
+
     const svg = svgGui.contentDocument;
     const stylesheet = svg.styleSheets[0];
 
@@ -70,7 +106,7 @@
         }
       });
     });
-  });
+  };
 
   ////////////////////////////////////////////////////////////////////////////////
   // maps
@@ -112,9 +148,11 @@
       maps[floor] = svgElement;
 
       // show the current floor
+      /*
       if (floor === currentFloor) {
         svgElement.classList.add("visible");
       }
+      */
 
       // inject styles
       const stylesheet = svg.styleSheets[0];
