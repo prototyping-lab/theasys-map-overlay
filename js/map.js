@@ -23,13 +23,13 @@
     if(intro) {
       intro.addEventListener('click', evt => hideIntro(evt));
     } else {
-      console.log('no intro screen');
+      // console.log('no intro screen');
     }
 
   });
 
   function hideIntro(evt) {
-    console.log('hide intro', evt.target.classList);
+    // console.log('hide intro', evt.target.classList);
     // remove intro
     document.querySelector('.panorama-wrapper .tour-intro').classList.remove('visible');
     // show tour 
@@ -46,13 +46,6 @@
   let currentFloorElement = null;
   let currentRoomElement = null;
   let currentFloor = 'H0';
-
-  // load elevator svg (map switching gui) , adding custom css and click handlers
-
-
-
-  // svgGui.addEventListener("load", initGui);
-
 
 function initGui() {
 
@@ -96,7 +89,7 @@ function initGui() {
         } else {
           // activate other map
           currentFloor = id;
-          console.log(`Go to floor: ${currentFloor}`);
+          // console.log(`Go to floor: ${currentFloor}`);
           showMap(currentFloor);
           if (currentFloorElement) {
             currentFloorElement.classList.remove("current-floor");
@@ -146,14 +139,7 @@ function initGui() {
 
       // register map
       maps[floor] = svgElement;
-
-      // show the current floor
-      /*
-      if (floor === currentFloor) {
-        svgElement.classList.add("visible");
-      }
-      */
-
+      
       // inject styles
       const stylesheet = svg.styleSheets[0];
 
@@ -207,7 +193,7 @@ function initGui() {
         room.addEventListener("click", () => {
           panoLink = THEA.panoLinks[room.id];
           if (panoLink) {
-            console.log(`Go to room: ${room.id} (${panoLink})  `);
+            // console.log(`Go to room: ${room.id} (${panoLink})  `);
 
             if (currentRoomElement) {
               currentRoomElement.classList.remove("current-room");
@@ -220,7 +206,7 @@ function initGui() {
             hideCurrentMap();
           } else {
             console.warn(`No valid Pano-Link for Room  ${room.id}`);
-            alert(`No valid Pano-Link for Room  ${room.id}`);
+            alert(`Der Raum "${room.id}" ist aktuell nicht verfügbar.`);
           }
         });
       });

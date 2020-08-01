@@ -1,6 +1,6 @@
 let THEA = {
 
-    debug: true,
+    debug: false,
     panoLinks: {},
 
     apiSet(key, value) {
@@ -66,6 +66,6 @@ let THEA = {
 
 // the theasys frame will issue a loaded event ...
 THEA.apiListen("loaded", () => {
-  console.log("Theasys loaded.");
+  if (THEA.debug) console.log("Theasys loaded.");
   THEA.init();
 });
